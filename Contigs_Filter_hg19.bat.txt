@@ -12,6 +12,7 @@ sed "s|tom|$CONTIGS|" contigsHERE/$CONTIGS".fna" > test.fna
 k=101
 bwa mem -k$k filters/hg19/hg19.fa test.fna -M >test.sam
 #you will need to make your own hg19 filter --file too big for GitHub
+#I found it easier to remove the alt_refs from this filter and then collect the unmapped contigs, than the other way around
 
 java -Xmx2g -jar  SamFormatConverter INPUT=test.sam OUTPUT=test.bam
 samtools sort test.bam test.sorted
