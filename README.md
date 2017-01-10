@@ -9,10 +9,13 @@ Genome Research 2017
 All sequencing and assembled MHC haplotype data are linked to the NCBI BioProject (https://www.ncbi.nlm.nih.gov/bioproject/) accession number PRJEB6763
 
 Included here are:
+
 1. the scripts and filters used to extract the CDS alleles for the expressed MHC region genes
 	a. directly from fastq files (ExtractXX.bat)
 	b. from the assembled contigs (Contigs_XX.bat)
 and [data] the CDS alleles (also deposited in GenBank)
+
 2. the scripts used to make contigs for each homozygous cell (Contig_generation/x.pl)
 and [unprocessed_contigs] the resulting contigs
+
 3. the scripts used to make full MHC region haplotype scaffolds from these contigs
