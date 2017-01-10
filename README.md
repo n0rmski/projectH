@@ -3,6 +3,7 @@
 These are the scripts and accessory files from the MHC region sequencing project as described in:
 
 Sequences of 95 human MHC haplotypes reveal extreme coding variation in genes other than highly polymorphic HLA class I and II.
+
 Paul J. Norman, Steven J. Norberg, Lisbeth A. Guethlein, Neda Nemat-Gorgani, Thomas Royce, Emily E. Wroblewski, Tamsen Dunn, Tobias Mann, Claudia Alicata, Jill A. Hollenbach, Weihua Chang, Melissa Shults Won, Kevin L. Gunderson, Laurent Abi-Rached, Mostafa Ronaghi and Peter Parham.
 Genome Research 2017
 
