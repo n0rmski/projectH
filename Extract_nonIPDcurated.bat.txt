@@ -1,0 +1,46 @@
+
+#This outlines the process for extracting and filtering reads specific to the non-IPD curated MHC region genes
+#Shown here are bowtie version 1 params as they give clearer picture of % mismatch than BT2 params (these were 100bp reads, and v3 is 3 mismatches..).
+
+cat [all template fasta files] > IWantEverything.fas
+#bowtie-build -f -o 1 IWantEverything.fas IWE
+
+bowtie -p24 -q --trim5 3 --trim3 5 -v 3 -e 90 -I 75 -X 1000 filters/IWE -1 [sample]_1.fq -2 [sample]_2.fq testdump --al test.fastq >  test_log.txt 2>&1
+
+#the fasta files are in the repository 'filters' branch
+cp locus specific fasta to [LOCUS].fas
+cat all others to Notlocus.fas
+
+#make filters
+bowtie-build -f -o 1 [LOCUS].fas [LOCUS]
+bowtie-build -f -o 1 Notlocus.fas Notlocus
+
+#positive filter 
+bowtie -q -p7 --trim5 3 --trim3 7 -v 3 -e 90 -I 400 -X 1000 filters/[LOCUS] -1 Seqs/test_1.fastq -2 Seqs/test_2.fastq  testdump --al [LOCUS]_test_PF.fastq >> test_log.txt 2>&1
+
+#neg filter		  
+bowtie -q -p7 --trim5 3 --trim3 7 -v 1 -y -I 400 -X 1000 filters/Notlocus -1 [LOCUS]_test_PF_1.fastq -2 [LOCUS]_test_PF_2.fastq testdump --un [LOCUS]_test_NF.fastq  >>  test_log.txt 2>&1
+
+#Final align to make vcf
+bowtie -q -p7 --sam -v 3 -e 120 -y -I 400 -X 1000 filters/[LOCUS] -1 [LOCUS]_test_NF_1.fastq -2 [LOCUS]_test_NF_2.fastq [LOCUS]_test.sam --al [LOCUS]_test.fastq  >>  test_log.txt 2>&1
+
+#these were homozygous samples so we simply made consensus
+samtools view -bS -q10 [LOCUS]_test.sam > [LOCUS]_test.bam
+samtools sort [LOCUS]_test.bam [LOCUS]_test.sorted
+tg_index -b [LOCUS]_test.sorted.bam
+gap5_consensus -format fasta [LOCUS]_test.sorted.0
+
+#or we can use a variant call generator
+samtools mpileup -E -m 3 -F 0.0002 -uf filters/[LOCUS].fas [LOCUS]_test.sorted.bam -l filters/[LOCUS].bed| bcftools view -bcg - > [LOCUS]_test.raw.bcf
+bcftools view [LOCUS]_test.raw.bcf >[LOCUS]_test_nuc.vcf
+
+#variant call generator -- newer version enables non binary SNPs and works with Bowtie2 indel-enabled alignments
+samtools view -b -q10 test_locus.sam -o test_locus.bam
+samtools sort -o test_locus.sorted.bam -T temp test_locus.bam
+samtools mpileup -m 3 -F 0.0002 -uf filters/locus.fas test_locus.sorted.bam -l filters/locus.bed | bcftools call --multiallelic-caller -O v -o test_locus_nuc.vcf
+
+#this makes a consensus from homozygous vcf (don't use for hets!)
+R CMD BATCH --vanilla '--args vcf.test Root.txt' MOScallscript.R
+
+#  for normal heterozygous samples the *nuc.vcf files can be used in PING alelle caller (see Norman et al. 2016)
+

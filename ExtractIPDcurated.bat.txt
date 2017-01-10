@@ -1,0 +1,21 @@
+
+### Classical (IPD curated HLA genes) sequences were extracted with the following:
+
+#bowtie2-build -f -o1 IPD_ALL_HLA.fas IPD_ALL_HLA
+
+bowtie2 -p16 --trim5 3 --trim3 5 -L 20 -i S,1,0.5 --score-min L,0,-0.187 -I 75 -X 1000 -x filters/IPD_ALL_HLA -1 /data/$FAS"_R1.fq.gz" -2 /data/$FAS"_R1.fq.gz"  -S dump.sam --al-conc $FAS"_HLA.fastq" --un-conc dump.me
+
+### and/or combined with -the other IPD curated but less studied loci, including MICB, TAP etc
+
+#bowtie2-build -f -o1 IPD_nothla_gen.fas
+bowtie2 -p16 --trim5 3 --trim3 5 -L 20 -i S,1,0.5 --score-min L,0,-0.187 -I 75 -X 1000 -x filters/IPD_nothla_gen -1 /data/$FAS"_R1.fq.gz" -2 /data/$FAS"_R1.fq.gz"  -S dump.sam --al-conc $FAS"_IPDnotHLA.fastq" --un-conc dump.me
+
+### Remove HLA-Y and H with
+#bowtie2-build -f -o1 HLAY_all_PN2016_noGaps.fas HLA_Yfilter
+#bowtie2-build -f -o1 H_all_noGaps.fas H_all_noGaps
+bowtie2 -p16 --trim5 3 --trim3 5 -L 20 -i S,1,0.5 --score-min L,0,-0.18 -I 100 -X 1000 -x filters/HLA_Yfilter -1 test_1.fastq -2 test_2.fastq -S dump.sam --al-conc dump.me --un-conc TestnoY.fastq
+
+bowtie2 -p16 --trim5 3 --trim3 5 -L 20 -i S,1,0.5 --score-min L,0,-0.18 -I 100 -X 1000 -x filters/H_all_noGaps -1 TestnoY.1.fastq -2 TestnoY.2.fastq -S dump.sam --al-conc dump.me --un-conc TestnoHY.fastq
+
+
+The resulting fastq files were loaded into GenDX, or similar software can be used (or look out for PINGhla)

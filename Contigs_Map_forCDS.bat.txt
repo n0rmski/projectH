@@ -1,0 +1,19 @@
+
+#this uses the filtered contigs to map to reference and make consensus CDS
+
+cat [sample]CONTIGS_in.fna > miniplus.fas
+
+cp filters/[LOCUS].fas ref.fna
+bwa index ref.fna
+
+k=101
+bwa mem -k$k ref.fna miniplus.fas -M >oot.sam
+
+java -jar -Xmx8g SamFormatConverter.jar INPUT=oot.sam OUTPUT=test.bam
+samtools sort test.bam test.sorted
+tg_index -b test.sorted.bam
+gap5_consensus -format fasta test.sorted.0
+mv cons.fasta [sample]oot.fas
+
+
+
