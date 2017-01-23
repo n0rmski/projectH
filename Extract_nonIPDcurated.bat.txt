@@ -24,13 +24,7 @@ bowtie -q -p7 --trim5 3 --trim3 7 -v 1 -y -I 400 -X 1000 filters/Notlocus -1 [LO
 #Final align to make vcf
 bowtie -q -p7 --sam -v 3 -e 120 -y -I 400 -X 1000 filters/[LOCUS] -1 [LOCUS]_test_NF_1.fastq -2 [LOCUS]_test_NF_2.fastq [LOCUS]_test.sam --al [LOCUS]_test.fastq  >>  test_log.txt 2>&1
 
-#these were homozygous samples so we simply made consensus
-samtools view -bS -q10 [LOCUS]_test.sam > [LOCUS]_test.bam
-samtools sort [LOCUS]_test.bam [LOCUS]_test.sorted
-tg_index -b [LOCUS]_test.sorted.bam
-gap5_consensus -format fasta [LOCUS]_test.sorted.0
-
-#or we can use a variant call generator
+#these were homozygous samples so we simply made consensus using a variant call generator
 samtools mpileup -E -m 3 -F 0.0002 -uf filters/[LOCUS].fas [LOCUS]_test.sorted.bam -l filters/[LOCUS].bed| bcftools view -bcg - > [LOCUS]_test.raw.bcf
 bcftools view [LOCUS]_test.raw.bcf >[LOCUS]_test_nuc.vcf
 
