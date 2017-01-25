@@ -1,6 +1,7 @@
 # projectH
 Here are scripts for
-Making contigs from the MHC region from homozygous indivuals
+
+Making and filtering contigs from the MHC region from homozygous indivuals
 
 Turning contigs into superscaffolds that cover the MHC (Contigula_)
 
