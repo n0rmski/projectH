@@ -15,5 +15,9 @@ tg_index -b test.sorted.bam
 gap5_consensus -format fasta test.sorted.0
 mv cons.fasta [sample]oot.fas
 
-
-
+#or we can simply get it from the final superscaffold 
+PRIM1=[32bp start of gene]
+PRIM2=[32bp start of gene]
+grep -o "$PRIM1".* $SAMPLE"_GF2_15.gapfilled.final.fa" 
+sed 's|'$PRIM2'.*|'$PRIM2'|' 
+#revcomp if needed.. (I use Emboss revseq)
