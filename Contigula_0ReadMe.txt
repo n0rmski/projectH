@@ -1,7 +1,9 @@
 Here are the three perl scripts used to build the assemblies from the contigs that were generated from HLA homozygous individuals.
-The inputs are the contigs and the sequence reads (with  those mapping outside MHC removed)
+The inputs are the contigs and the sequence reads (with those mapping outside MHC removed)
 The order of use is Reorder_pre, Condense, ScaffMaker
+I also added some example batch files we used for sorting, mapping etc.
 
+Process:
 1. Sort the contigs to remove non-HLA region (e.g. use F001.bat)
 2. Remove read pairs having both ends that map within a single contig (e.g. use F002.bat)
 3. Harvest read pairs having each end in a different contig (e.g. use F003.bat)
