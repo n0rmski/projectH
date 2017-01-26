@@ -6,6 +6,11 @@ Unfiltered sequence reads (We used those generated from HLA homozygous individua
 A file listing all possible 101mers from region of interest (in our case, the MHC project haplotypes )
 A single reference sequence of the region for integrity checks 
 
+Dependencies are:
+Velveth
+Minimus
+Exonerate (part of EMBOSS)
+
 Setup.pl calls the scripts that perform the following:
 
 	selects reads for running in Velvet
