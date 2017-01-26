@@ -5,7 +5,7 @@ Gapfiller
 BWA
 Picard tools
 
-The order of use is Reorder_pre, Condense, ScaffMaker
+The order of use is Reorder_pre, ConDense, ScaffMaker
 I also added some example batch files we used for sorting, mapping etc.
 
 Process:
@@ -13,7 +13,7 @@ Process:
 2. Remove read pairs having both ends that map within a single contig (e.g. use F002.bat)
 3. Harvest read pairs having each end in a different contig (e.g. use F003.bat)
 4. Run Reorder_pre.pl
-5. Run Condense.pl
+5. Run ConDense.pl
 6. Run ScaffMaker.pl
 7. Run GapFiller 
 8. Order scaffolds relative to reference (SuperCoxMix), and remove those having both ends map within another (unless the ends have been clipped to do this -as marked with S flag in CIGAR)
