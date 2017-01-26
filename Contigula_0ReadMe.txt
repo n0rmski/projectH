@@ -1,5 +1,10 @@
 Here are the three perl scripts used to build the assemblies from the contigs that were generated from HLA homozygous individuals.
 The inputs are the contigs and the sequence reads (with those mapping outside MHC removed)
+Dependencies are:
+Gapfiller
+BWA
+Picard tools
+
 The order of use is Reorder_pre, Condense, ScaffMaker
 I also added some example batch files we used for sorting, mapping etc.
 
