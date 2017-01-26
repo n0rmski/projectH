@@ -3,6 +3,8 @@ The inputs are the contigs and the sequence reads (with those mapping outside MH
 Dependencies are:
 Gapfiller
 BWA
+Bowtie
+Samtools
 Picard tools
 
 The order of use is Reorder_pre, ConDense, ScaffMaker
