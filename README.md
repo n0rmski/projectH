@@ -10,7 +10,7 @@ All sequencing and assembled MHC haplotype data are linked to the NCBI BioProjec
 
 Included here are:
 
-1. the scripts and filters used to extract the CDS alleles for the expressed MHC region genes
+1. the scripts [scripts] and filters [filters] used to extract the CDS alleles for the expressed MHC region genes
 	a. directly from fastq files (ExtractXX.bat)
 	b. from the assembled contigs (Contigs_XX.bat)
 and [data] the CDS alleles (also deposited in GenBank)
@@ -20,4 +20,4 @@ and [unprocessed_contigs] the resulting contigs
 
 3. (Contigula) the scripts used to make full MHC region haplotype scaffolds from these contigs
 
-4. Full alignments for every gene in the MHC region 
+4. Full alignments for every gene in the MHC region [alignments]
