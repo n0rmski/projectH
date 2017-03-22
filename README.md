@@ -19,3 +19,5 @@ and [data] the CDS alleles (also deposited in GenBank)
 and [unprocessed_contigs] the resulting contigs
 
 3. (Contigula) the scripts used to make full MHC region haplotype scaffolds from these contigs
+
+4. Full alignments for every gene in the MHC region 
