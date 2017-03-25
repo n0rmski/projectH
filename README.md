@@ -12,7 +12,7 @@ Included here are:
 
 1. the scripts [see the scripts branch] and filters [filters branch] used to extract the CDS alleles for the expressed MHC region genes a. directly from fastq files (ExtractXX.bat) b. from the assembled contigs (Contigs_XX.bat)
 
-2. [data branch] the CDS alleles (also deposited in GenBank)
+2. [data branch] the CDS alleles of 140 MHC region genes (also deposited in GenBank)
 
 3. the scripts used to make contigs for each homozygous cell (Contig_generation/x.pl) and [unprocessed_contigs] the resulting contigs
 
