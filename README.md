@@ -1,21 +1,9 @@
 # projectH
 
-These are the scripts and accessory files from the MHC region sequencing project as described in:
+Alignments of 128 HLA region genes extracted from 95 homozygous individuals*
 
-Sequences of 95 human MHC haplotypes reveal extreme coding variation in genes other than highly polymorphic HLA class I and II.
-Paul J. Norman, Steven J. Norberg, Lisbeth A. Guethlein, Neda Nemat-Gorgani, Thomas Royce, Emily E. Wroblewski, Tamsen Dunn, Tobias Mann, Claudia Alicata, Jill A. Hollenbach, Weihua Chang, Melissa Shults Won, Kevin L. Gunderson, Laurent Abi-Rached, Mostafa Ronaghi and Peter Parham.
-Genome Research 2017
+These are full gene alignments for the MHC region genes. It will take a while to get them all done, so email me if you don't see your favourite gene yet. For now I am just using the gene sequence for every distinct CDS rather than every distinct gene sequence; contact me if you want more.
 
-All sequencing and assembled MHC haplotype data are linked to the NCBI BioProject (https://www.ncbi.nlm.nih.gov/bioproject/) accession number PRJEB6763
+For IPD curated genes (HLAxx, MIC and TAP) - I only included the novel sequences pending official names. The accession numbers for these sequences are listed in Supplemental Table S2.
 
-Included here are:
-
-1. the scripts [see the scripts branch] and filters [filters branch] used to extract the CDS alleles for the expressed MHC region genes a. directly from fastq files (ExtractXX.bat) b. from the assembled contigs (Contigs_XX.bat)
-
-2. [data branch] the CDS alleles of 140 MHC region genes (also deposited in GenBank)
-
-3. the scripts used to make contigs for each homozygous cell (Contig_generation/x.pl) and [unprocessed_contigs] the resulting contigs
-
-4. (Contigula) the scripts used to make full MHC region haplotype scaffolds from these contigs
-
-5. [alignments branch] Full alignments for every gene in the MHC region 
+*Described in Norman et al. 2017. Genome Research (in press)
