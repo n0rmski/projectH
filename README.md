@@ -6,4 +6,4 @@ These are full gene alignments for the MHC region genes. It will take a while to
 
 For IPD curated genes (HLAxx, MIC and TAP) - I only included the novel sequences pending official names. The accession numbers for these sequences are listed in Supplemental Table S2.
 
-*Described in Norman et al. 2017. Genome Research (in press)
+*The CDS for these genes (ie the exons) are described in Norman et al. 2017. Genome Research (in press) and given here in the [data] branch.
